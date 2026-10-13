@@ -1,0 +1,14 @@
+{
+  "name": "Reel Diary",
+  "short_name": "Reel Diary",
+  "description": "Your films. Your memories.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#000a00",
+  "theme_color": "#000a00",
+  "icons": [
+    {"src":"icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
