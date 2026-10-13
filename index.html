@@ -20,6 +20,23 @@
 .search-mode-tabs{margin:0 0 8px}.search-mode-tabs button{flex:1}.search-mode-tabs button.active{background:#17391e;border-color:#6d9a65;color:#e8f3e3}.movie-result-sub{display:block;color:var(--muted);font-size:12px;margin-top:3px}.movie-result-overview{display:block;color:#c1d0bf;font-size:12px;margin-top:5px;line-height:1.4}.movie-search-result{display:flex;align-items:center;gap:12px;text-align:left;background:#0d1c0f;color:var(--text);border:1px solid var(--line);border-radius:13px;padding:9px;width:100%}.movie-search-result:hover,.movie-search-result:focus-visible{border-color:#6d9a65;outline:1px solid #6d9a6533}.movie-search-poster{width:48px;height:70px;object-fit:cover;border-radius:6px;flex-shrink:0;background:#18371e}.movie-search-avatar{width:48px;height:58px;display:grid;place-items:center;background:#18371e;border-radius:8px;flex-shrink:0;font-size:24px}
 
 .film-edit-actions{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:18px}.film-edit-primary-actions{display:flex;align-items:center;gap:8px}.film-edit-primary-actions button{flex:0 0 auto}.modal-actions .icon-delete-btn{flex:0 0 36px;width:36px;min-width:36px;height:36px;padding:0;display:inline-flex;align-items:center;justify-content:center;color:var(--danger);border:1px solid #57302b;border-radius:9px;background:#170c0b}.modal-actions .icon-delete-btn svg{display:block}
+
+/* Stage 35: subtle, stable interaction polish for the existing forest-green design. */
+@media (hover:hover) and (pointer:fine){
+  .film{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease}
+  .film:hover{transform:translateY(-3px);border-color:#3b6540;box-shadow:0 10px 24px #0006}
+  .film .poster img{transition:transform .28s ease}
+  .film:hover .poster img{transform:scale(1.025)}
+  .primary,.secondary,.film-actions button,.tabs button,.bottom-nav button{transition:background-color .16s ease,border-color .16s ease,color .16s ease,box-shadow .16s ease}
+  .primary:hover{box-shadow:0 7px 22px #0005;filter:brightness(1.04)}
+  .secondary:hover,.film-actions button:hover{background:#17351d;border-color:#426b47;color:#e8f3e3}
+  .tabs button:not(.active):hover{border-color:#3a5a3d;color:#e0eddb}
+}
+:where(button,a,input,textarea,select,[tabindex]):focus-visible{outline:2px solid #b8d6ad;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  .film,.film .poster img,.primary,.secondary,.film-actions button,.tabs button,.bottom-nav button{transition:none!important}
+  .film:hover,.film:hover .poster img{transform:none!important}
+}
 </style></head><body>
 <div class="app">
 <header class="top"><div class="brand-icon">🎬</div><div class="brand"><h1>Reel Diary</h1><div class="tagline">Your films. Your memories.</div></div><button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button></header>
