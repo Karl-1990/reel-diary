@@ -1,4 +1,4 @@
-const CACHE = 'reel-diary-stage19';
+const CACHE = 'reel-diary-stage19-fixed';
 const FILES = ['./', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', event => {
