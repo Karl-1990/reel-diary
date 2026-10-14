@@ -1,4 +1,4 @@
-const CACHE = 'reel-diary-stage78-other-genre-popup';
+const CACHE = 'reel-diary-stage79-compact-stats';
 const FILES = ['./', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', event => {

@@ -488,6 +488,83 @@ body.other-genres-open{overflow:hidden}
 .collection-legend-row small{font-size:11px;text-align:right;color:var(--muted)}
 @media(max-width:560px){.stats-charts-grid{grid-template-columns:minmax(0,1fr)}.chart-card{padding:13px}.chart-head h4{font-size:14px}.genre-chart-layout{grid-template-columns:minmax(112px,.85fr) minmax(0,1.15fr);gap:10px}.genre-legend{gap:10px}.chart-axis-label{font-size:10px}}
 
+
+/* Stage 79: compact four-column Stats summary with icons beside the numbers. */
+.stats-cards{
+  display:grid!important;
+  grid-template-columns:repeat(4,minmax(0,1fr))!important;
+  gap:0!important;
+  min-width:0;
+  padding:4px!important;
+  margin-bottom:0;
+  background:var(--panel2)!important;
+  border:1px solid var(--line)!important;
+  border-radius:14px!important;
+  overflow:hidden;
+}
+.stats-cards .stats-card{
+  display:flex!important;
+  flex-direction:column!important;
+  align-items:center!important;
+  justify-content:center!important;
+  min-width:0!important;
+  padding:6px 3px!important;
+  margin:0!important;
+  text-align:center!important;
+  background:transparent!important;
+  border:0!important;
+  border-radius:0!important;
+  box-shadow:none!important;
+}
+.stats-cards .stats-card+.stats-card{border-left:1px solid var(--line)!important}
+.stats-card-value-row{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  min-width:0;
+  max-width:100%;
+  white-space:nowrap;
+}
+.stats-cards .stats-card strong{
+  display:inline-block!important;
+  min-width:0;
+  color:var(--text)!important;
+  font-size:clamp(17px,4.8vw,22px)!important;
+  font-weight:750;
+  line-height:1.05!important;
+  letter-spacing:-.45px!important;
+  font-variant-numeric:tabular-nums;
+}
+.stats-card-icon{display:block;width:14px;height:14px;flex:0 0 14px;overflow:visible}
+.stats-card-icon-accent{color:var(--accent)}
+.stats-card-icon-gold{color:var(--gold)}
+.stats-cards .stats-card span{
+  display:block!important;
+  max-width:100%;
+  margin-top:5px!important;
+  color:var(--accent)!important;
+  font-size:11px!important;
+  font-weight:500;
+  line-height:1.2!important;
+  text-align:center!important;
+  overflow-wrap:anywhere;
+  word-break:normal;
+}
+.stats-cards .stats-card-gold span{color:var(--gold)!important}
+@media(max-width:380px){
+  .stats-cards{padding:3px!important;border-radius:12px!important}
+  .stats-cards .stats-card{padding:6px 2px!important}
+  .stats-card-value-row{gap:8px}
+  .stats-cards .stats-card strong{font-size:clamp(15px,4.6vw,19px)!important;letter-spacing:-.55px!important}
+  .stats-card-icon{width:12px;height:12px;flex-basis:12px}
+  .stats-cards .stats-card span{font-size:10px!important;line-height:1.18!important;margin-top:4px!important}
+}
+@media(min-width:600px){
+  .stats-cards .stats-card{padding:7px 5px!important}
+  .stats-card-value-row{gap:12px}
+}
+
 </style></head><body>
 <div class="app">
 
@@ -633,11 +710,23 @@ if(decadeEntries.length){
 }
 
 host.innerHTML=`
-<div class="stats-cards">
-  <div class="stats-card"><strong>${films.length}</strong><span>Total films in diary</span></div>
-  <div class="stats-card"><strong>${watched.length}</strong><span>Films watched</span></div>
-  <div class="stats-card"><strong>${average}${average!=='—'?' / 5':''}</strong><span>Average rating · ${rated.length} rated</span></div>
-  <div class="stats-card"><strong>${fiveStar}</strong><span>Five-star films</span></div>
+<div class="stats-cards" aria-label="Film diary summary">
+  <div class="stats-card">
+    <div class="stats-card-value-row"><strong>${films.length}</strong><svg class="stats-card-icon stats-card-icon-accent" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h18v12H3zM3 8l1.5-5h17L20 8M7 3 5.5 8M13 3 11.5 8M19 3 17.5 8M3 12h18"/></svg></div>
+    <span>Total films in diary</span>
+  </div>
+  <div class="stats-card">
+    <div class="stats-card-value-row"><strong>${watched.length}</strong><svg class="stats-card-icon stats-card-icon-accent" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 2.5 2.5L16.5 9"/></svg></div>
+    <span>Films watched</span>
+  </div>
+  <div class="stats-card stats-card-gold">
+    <div class="stats-card-value-row"><strong>${average}</strong><svg class="stats-card-icon stats-card-icon-gold" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor"><path d="m12 2.8 2.85 5.78 6.38.93-4.62 4.5 1.09 6.35L12 17.36l-5.7 3 1.09-6.35-4.62-4.5 6.38-.93L12 2.8Z"/></svg></div>
+    <span>Average rating</span>
+  </div>
+  <div class="stats-card stats-card-gold">
+    <div class="stats-card-value-row"><strong>${fiveStar}</strong><svg class="stats-card-icon stats-card-icon-gold" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0V4ZM8 6H4v2a4 4 0 0 0 4 4M16 6h4v2a4 4 0 0 1-4 4M12 13v5m-4 3h8m-6-3h4"/></svg></div>
+    <span>Five-star films</span>
+  </div>
 </div>
 <div class="stats-charts-grid">
   <section class="stats-box chart-card"><div class="chart-head"><div><h4>02 / Progress · Your movie journey</h4><p>Films watched over time</p></div><span class="chart-metric">${datedWatched.length} dated</span></div>${progressMarkup}</section>
