@@ -105,10 +105,45 @@ label,.field span{color:var(--text-secondary)}
 /* Stage 53: three equal-width movie search mode buttons */
 .search-mode-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:7px;overflow:visible;box-sizing:border-box}
 .search-mode-tabs button{flex:initial;width:100%;min-width:0}
+
+/* Stage 54: cinematic film-strip welcome panel. */
+.hero-filmstrip{padding:20px 22px 18px;background:linear-gradient(120deg,#102b16,#071407 70%)}
+.hero-filmstrip .hero-tape{display:flex;align-items:center;justify-content:space-between;gap:0;width:100%;height:6px;overflow:hidden}
+.hero-filmstrip .hero-tape span{display:block;flex:0 0 14px;width:14px;height:6px;background:#B99753;border-radius:1px}
+.hero-filmstrip h2{margin:12px 0 8px;max-width:none;line-height:1.15;text-align:center;font-size:clamp(23px,4vw,34px);letter-spacing:-.8px}
+.hero-filmstrip h2 em{display:inline-block;color:#D2B46F;font-style:italic}
+.hero-filmstrip p{max-width:560px;margin:0 auto 18px;text-align:center;color:#b3c4ae;font-size:14px}
+.hero-filmstrip .hero-actions{display:flex;align-items:stretch;gap:9px;width:100%}
+.hero-filmstrip .hero-actions button{flex:1 1 0;min-width:0;padding:11px 6px;font-size:clamp(10px,1.4vw,13px);white-space:nowrap}
+.hero-filmstrip .hero-tape-bottom{margin-top:18px}
+@media(max-width:420px){.hero-filmstrip .hero-tape-bottom{margin-top:15px}.hero-filmstrip{padding:17px 13px 15px}.hero-filmstrip h2{font-size:clamp(20px,5.5vw,25px);letter-spacing:-.6px}.hero-filmstrip p{font-size:12px;line-height:1.45;margin-bottom:15px}.hero-filmstrip .hero-actions{gap:5px}.hero-filmstrip .hero-actions button{padding:10px 3px;font-size:10px;letter-spacing:-.2px}.hero-filmstrip .hero-tape span{flex-basis:14px;width:14px}}
+
+
+/* Stage 55: settings button blends into the welcome card, aligned with the first heading line. */
+.hero-filmstrip .hero-heading-row{position:relative;width:100%;}
+.hero-filmstrip .hero-heading-row h2{padding:0 34px;margin:12px 0 8px;}
+.hero-filmstrip .hero-settings{position:absolute;z-index:3;right:0;top:12px;width:30px;height:30px;min-width:30px;padding:0;border:0!important;border-radius:50%;background:#14271B!important;color:#A8B9A6!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1;}
+.hero-filmstrip .hero-settings:hover,.hero-filmstrip .hero-settings:focus-visible{background:#203629!important;color:#DCEBD7!important;outline:1px solid #425846;}
+@media(max-width:420px){.hero-filmstrip .hero-heading-row h2{padding:0 31px;margin-top:12px}.hero-filmstrip .hero-settings{top:10px;width:27px;height:27px;min-width:27px;font-size:14px}}
+
+
+
+/* Stage 56: approved welcome-card brand row and balanced section spacing. */
+.hero-filmstrip .hero-brand-row{display:flex;align-items:center;justify-content:space-between;gap:10px;min-height:40px;margin:12px 0 12px;}
+.hero-filmstrip .hero-brand-icon{position:relative;z-index:2;flex:0 0 40px;width:40px;height:40px;border:1px solid #2b5332;border-radius:12px;background:linear-gradient(145deg,#15371c,#071407);font-size:21px;}
+.hero-filmstrip .hero-brand{position:relative;z-index:2;flex:1;min-width:0;text-align:center;}
+.hero-filmstrip .hero-brand h1{margin:0;font-size:clamp(19px,3.5vw,23px);line-height:1.05;letter-spacing:-.6px;font-weight:750;color:#F2EBDD;}
+.hero-filmstrip .hero-brand .tagline{margin-top:1px;font-size:12px;line-height:1.1;font-style:italic;color:#D2B46F;}
+.hero-filmstrip .hero-settings{position:relative;top:auto;right:auto;z-index:3;flex:0 0 30px;width:30px;height:30px;min-width:30px;padding:0;border:0!important;border-radius:50%;background:#14271B!important;color:#A8B9A6!important;box-shadow:none!important;display:flex;align-items:center;justify-content:center;font-size:15px;line-height:1;}
+.hero-filmstrip .hero-settings:hover,.hero-filmstrip .hero-settings:focus-visible{background:#203629!important;color:#DCEBD7!important;outline:1px solid #425846;}
+.hero-filmstrip .hero-brand-row + p{margin:0 auto 12px;}
+.hero-filmstrip .hero-actions{margin-top:0;}
+@media(max-width:420px){.hero-filmstrip .hero-brand-row{gap:7px;margin:12px 0 12px}.hero-filmstrip .hero-brand-icon{flex-basis:34px;width:34px;height:34px;border-radius:10px;font-size:19px}.hero-filmstrip .hero-brand h1{font-size:19px}.hero-filmstrip .hero-brand .tagline{font-size:11px}.hero-filmstrip .hero-settings{flex-basis:30px;width:30px;height:30px;min-width:30px;font-size:14px}}
+
 </style></head><body>
 <div class="app">
-<header class="top"><div class="brand-icon">🎬</div><div class="brand"><h1>Reel Diary</h1><div class="tagline">Your films. Your memories.</div></div><button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button></header>
-<section class="hero"><div class="eyebrow">A little corner of cinema</div><h2>Every film has a story.<br>Keep yours.</h2><p>Save the films you watch, keep track of the ones you love, and build a watchlist for your next movie night.</p><div style="display:flex;gap:9px;flex-wrap:wrap"><button class="primary" id="addFirstBtn">＋ Add a film</button><button class="secondary" id="movieSearchBtn">⌕ Find a movie</button><button class="secondary" id="pickFilmBtn">✦ Pick tonight’s film</button></div></section>
+
+<section class="hero hero-filmstrip"><div class="hero-tape" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div><div class="hero-heading-row hero-brand-row"><div class="brand-icon hero-brand-icon" aria-hidden="true">🎬</div><div class="brand hero-brand"><h1>Reel Diary</h1><div class="tagline">Your films. Your memories.</div></div><button class="icon-btn hero-settings" id="settingsBtn" aria-label="Settings" title="Settings">⚙</button></div><p>Save the films you watch, keep track of the ones you love, and build a watchlist for your next movie night.</p><div class="hero-actions"><button class="primary" id="addFirstBtn">＋ Add a film</button><button class="secondary" id="movieSearchBtn">⌕ Find a movie</button><button class="secondary" id="pickFilmBtn">✦ Pick tonight’s film</button></div><div class="hero-tape hero-tape-bottom" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div></section>
 <section class="stats"><div class="stat"><strong id="watchedCount">0</strong><span>Films watched</span></div><div class="stat"><strong id="watchlistCount">0</strong><span>On your watchlist</span></div><div class="stat"><strong id="favouriteCount">0</strong><span>Favourites</span></div></section>
 <div class="section-head"><h3 id="sectionTitle">Your collection</h3><small id="sectionSubtitle">A story in every watch</small></div>
 <div class="tabs" id="tabs" aria-label="Filter your collection">
