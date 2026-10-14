@@ -101,6 +101,10 @@ label,.field span{color:var(--text-secondary)}
 /* Stage 49: equalise the visible gaps above and below the search bar. */
 .tabs{padding-bottom:0;margin-bottom:16px}
 .list-filter-row{margin-top:0}
+
+/* Stage 53: three equal-width movie search mode buttons */
+.search-mode-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;gap:7px;overflow:visible;box-sizing:border-box}
+.search-mode-tabs button{flex:initial;width:100%;min-width:0}
 </style></head><body>
 <div class="app">
 <header class="top"><div class="brand-icon">🎬</div><div class="brand"><h1>Reel Diary</h1><div class="tagline">Your films. Your memories.</div></div><button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button></header>
