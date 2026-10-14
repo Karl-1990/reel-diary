@@ -1,4 +1,4 @@
-const CACHE = 'reel-diary-stage36-status-pill';
+const CACHE = 'reel-diary-stage45-cohesive-toolbar';
 const FILES = ['./', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', event => {
