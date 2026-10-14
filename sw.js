@@ -1,4 +1,4 @@
-const CACHE = 'reel-diary-stage45-cohesive-toolbar';
+const CACHE = 'reel-diary-stage58-no-bottom-navigation';
 const FILES = ['./', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', event => {
