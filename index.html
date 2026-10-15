@@ -565,6 +565,47 @@ body.other-genres-open{overflow:hidden}
   .stats-card-value-row{gap:12px}
 }
 
+
+/* Stage 80 — targeted mobile audit. Preserve existing theme, cards and toolbar design. */
+html,body{max-width:100%;}
+.app,.hero,.modal,.film-board,.stats-dashboard,.calendar-panel{min-width:0;}
+button,a,input,select,textarea{touch-action:manipulation;}
+/* Phone-sized dialogs scroll within the visible viewport even when browser chrome moves. */
+@media(max-width:649px){
+  .modal-backdrop{height:100dvh;max-height:100dvh;overflow:hidden;}
+  .modal{max-height:min(92dvh,92vh);overscroll-behavior:contain;-webkit-overflow-scrolling:touch;}
+  .film-board{height:100dvh;max-height:100dvh;}
+  .theme-modal{max-height:92dvh;}
+  .modal-actions{flex-wrap:wrap;}
+  .settings-row>div{min-width:0;overflow-wrap:anywhere;}
+  .settings-row>.secondary,.settings-row>.file-button{flex:0 0 auto;min-height:44px;}
+  .calendar-grid{gap:3px;}
+  .calendar-day{min-height:50px;padding:4px 2px;border-radius:7px;}
+  .calendar-number{font-size:11px;}
+  .calendar-film{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+  .calendar-head button{min-width:44px;min-height:44px;display:inline-flex;align-items:center;justify-content:center;}
+  .hero-filmstrip .hero-actions button{min-height:44px;white-space:normal;overflow-wrap:normal;line-height:1.2;text-align:center;}
+  .search input,.field input,.field select,.field textarea,#tmdbToken{font-size:16px!important;}
+  .collection-manager-item button{min-height:44px;min-width:44px;}
+  .search-mode-tabs button{min-height:44px;}
+  .film-edit-primary-actions{min-width:0;flex-wrap:wrap;}
+  .film-edit-primary-actions button{min-height:44px;}
+  .film-actions button{min-height:40px;}
+  .modal-actions button{min-height:44px;}
+  .hero-filmstrip .hero-settings{flex-basis:44px;width:44px;height:44px;min-width:44px;min-height:44px;}
+  .list-filter-row .custom-filter-trigger,.list-filter-row #manageListsBtn{min-height:44px;}
+  .stats-charts-grid{min-width:0;}
+}
+/* Extremely narrow phones: don't sacrifice the Movie Night label to fit three buttons. */
+@media(max-width:380px){
+  .hero-filmstrip .hero-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;}
+  .hero-filmstrip .hero-actions button{width:100%;font-size:11px;padding:10px 5px;}
+  .hero-filmstrip .hero-actions button:last-child{grid-column:1/-1;}
+  .calendar-day{min-height:46px;}
+  .calendar-weekday{font-size:10px;}
+  .stats-card-value-row{gap:7px;}
+}
+@media(prefers-reduced-motion:reduce){.theme-option{transition:none!important;}}
 </style></head><body>
 <div class="app">
 
