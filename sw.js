@@ -1,5 +1,5 @@
-/* Reel Diary Stage 82: cache only local app-shell assets. */
-const CACHE = 'reel-diary-stage82-pwa-offline';
+/* Reel Diary Stage 85: cache only local app-shell assets. */
+const CACHE = 'reel-diary-stage85-approved-film-board';
 const CACHE_PREFIX = 'reel-diary-';
 const APP_ASSETS = [
   './', './index.html', './manifest.json', './icon.svg',
