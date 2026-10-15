@@ -1,4 +1,4 @@
-const CACHE = 'reel-diary-stage80-mobile-audit';
+const CACHE = 'reel-diary-stage81-data-safety';
 const FILES = ['./', './index.html', './manifest.json', './icon.svg'];
 
 self.addEventListener('install', event => {
