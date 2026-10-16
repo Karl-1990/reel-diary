@@ -928,6 +928,49 @@ button,a,input,select,textarea{touch-action:manipulation;}
 @media (prefers-reduced-motion: reduce) {
   #tabs button.rd88-aura, .rd88-confetti-particle {animation:none!important;}
 }
+
+/* Stage 92 — Option 5: Precision Alignment.
+   CSS-only refinement based on the existing Stage 91 markup; no data or behaviour changes. */
+/* Align the search field with the four filter controls below it. */
+#collectionSearch{align-items:stretch;margin-bottom:12px}
+#collectionSearch #filterInput{height:44px;min-height:44px;padding:0 14px;line-height:1.2;border-radius:10px}
+.list-filter-row{align-items:stretch;column-gap:6px}
+.list-filter-row .custom-filter-select{height:44px;min-width:0}
+.list-filter-row .custom-filter-trigger,
+.list-filter-row #manageListsBtn{height:44px;min-height:44px;box-sizing:border-box}
+/* Keep the four controls optically centred and stop long selected values changing their height. */
+.list-filter-row .custom-filter-trigger{display:flex;align-items:center;justify-content:center;overflow:hidden}
+.list-filter-row .custom-filter-trigger .custom-filter-label{min-width:0;max-width:100%;text-align:center}
+.list-filter-row .custom-filter-select.is-open{z-index:25}
+/* Give each film card a consistent title zone while allowing longer titles to wrap naturally. */
+.grid{align-items:stretch;grid-auto-rows:1fr}
+.grid>.film{height:100%;min-width:0}
+.film-title{min-height:2.5em;line-height:1.25;overflow-wrap:anywhere}
+.film-body{min-width:0}
+/* Standardise the status, ratings and action rows so controls line up across each card row. */
+.film .film-footer{width:100%;min-width:0}
+.film .film-footer>.film-meta{min-height:25px;display:inline-flex;align-items:center;box-sizing:border-box}
+.film .film-ratings{min-height:58px;width:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;gap:5px;padding-top:6px;box-sizing:border-box}
+.film .film-ratings:empty{visibility:hidden}
+.film .film-ratings .tmdb-rating,
+.film .film-ratings .rating{margin:0;min-height:24px;display:inline-flex;align-items:center;box-sizing:border-box;white-space:nowrap}
+.film .film-actions{width:100%;min-height:34px;display:flex;align-items:stretch;gap:6px;margin-top:9px}
+.film .film-actions button{height:34px;min-height:34px;display:inline-flex;align-items:center;justify-content:center;line-height:1.15;box-sizing:border-box}
+.film .film-actions .heart{flex:0 0 34px;width:34px;padding:0;font-size:16px}
+/* Preserve the same precision without forcing controls or text outside narrow screens. */
+@media(max-width:380px){
+  .app{padding-left:12px;padding-right:12px}
+  .list-filter-row{column-gap:4px}
+  .list-filter-row .custom-filter-trigger{padding-left:2px;padding-right:2px;font-size:10px}
+  .list-filter-row .custom-filter-heading{font-size:8px}
+  .list-filter-row .custom-filter-value{font-size:10px}
+  .film-body{padding:9px}
+  .film .film-actions{gap:4px}
+}
+@media(prefers-reduced-motion:reduce){
+  .list-filter-row .custom-filter-chevron{transition:none}
+}
+
 </style></head><body>
 <div class="app">
 
