@@ -1,5 +1,5 @@
 /* Reel Diary Stage 87: personal ratings fixed at 10 points; preserve the Stage 85 app shell. */
-const CACHE = 'reel-diary-stage87-rating-scale-fixed';
+const CACHE = 'reel-diary-stage90-favourite-order';
 const CACHE_PREFIX = 'reel-diary-';
 const APP_ASSETS = [
   './', './index.html', './manifest.json', './icon.svg',
