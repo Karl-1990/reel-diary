@@ -909,12 +909,12 @@ button,a,input,select,textarea{touch-action:manipulation;}
 }
 
 
-/* Stage 88: decorative button effects only; no button layout or filter styles changed. */
-@keyframes rd88-gold-aura {
-  0%,100% { filter: drop-shadow(0 0 0 rgba(229,199,125,0)); }
-  45% { filter: drop-shadow(0 0 8px rgba(229,199,125,.95)) drop-shadow(0 0 14px rgba(229,199,125,.7)); }
+/* Stage 91: navigation aura follows the active theme accent. */
+@keyframes rd88-theme-aura {
+  0%,100% { filter: drop-shadow(0 0 0 color-mix(in srgb,var(--accent) 0%,transparent)); }
+  45% { filter: drop-shadow(0 0 7px color-mix(in srgb,var(--accent) 95%,transparent)) drop-shadow(0 0 14px color-mix(in srgb,var(--gold) 58%,transparent)); }
 }
-#tabs button.rd88-aura { animation: rd88-gold-aura 1s ease-out; }
+#tabs button.rd88-aura { animation: rd88-theme-aura 1s ease-out; }
 .rd88-confetti-particle {
   position:fixed; z-index:100000; pointer-events:none; width:5px; height:8px;
   border-radius:1px; opacity:0; left:0; top:0;
@@ -1338,7 +1338,7 @@ $('settingsBtn').addEventListener('click',()=>{$('tmdbToken').value=localStorage
 });$('clearBtn').addEventListener('click',()=>{if(confirm('Delete every film in this diary? Export a backup first if you want to keep them.')){films=[];collections=[];renderCollectionOptions();if(!save())return;closeModal('settingsModal');toast('Diary cleared')}});$('calendarView').addEventListener('click',e=>{const shift=e.target.closest('[data-calendar-shift]');const edit=e.target.closest('[data-calendar-edit]');if(shift){calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth()+Number(shift.dataset.calendarShift),1);renderCalendar()}if(edit)editFilm(edit.dataset.calendarEdit)});document.querySelectorAll('select').forEach(select=>{const updateSelectText=()=>select.classList.toggle('is-placeholder',select.value===''||(select.id==='nightStatus'&&select.value==='both'));updateSelectText();select.addEventListener('change',updateSelectText)});load();['sortSelect','genreFilter','listFilter'].forEach(setupCustomFilter);setView('all');syncMissingTmdbRatings();if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
 })();
 </script><script>
-/* Stage 88: animations are triggered independently of saved data and view rendering. */
+/* Stage 91: theme-aware animations, triggered independently of saved data and view rendering. */
 (function () {
   const reducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
   function celebrate(button) {
@@ -1346,7 +1346,9 @@ $('settingsBtn').addEventListener('click',()=>{$('tmdbToken').value=localStorage
     const rect = button.getBoundingClientRect();
     const centreX = rect.left + rect.width / 2;
     const centreY = rect.top + rect.height / 2;
-    const colours = ['#e5c77d','#94b18d','#f0ddb0','#648b71'];
+    const themeStyles = getComputedStyle(document.documentElement);
+    const readColour = name => themeStyles.getPropertyValue(name).trim();
+    const colours = [readColour('--accent'), readColour('--gold'), readColour('--accent2'), readColour('--muted')].filter(Boolean);
     for (let i=0; i<16; i++) {
       const piece = document.createElement('i');
       piece.className = 'rd88-confetti-particle';
